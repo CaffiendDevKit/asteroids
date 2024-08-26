@@ -1,4 +1,5 @@
 import pygame
+import player as Player
 
 from constants import *
 
@@ -7,6 +8,8 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
+
+    player = Player.Player(x=(SCREEN_WIDTH / 2),y=(SCREEN_HEIGHT / 2))
 
     print("Starting asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -17,8 +20,9 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+        player.draw(screen)
         pygame.display.flip()
-        dt = clock.tick(60) / 1000
+        dt = clock.tick(TARGET_FPS) / 1000 # 60 FPS
 
 
 if __name__ == "__main__":
