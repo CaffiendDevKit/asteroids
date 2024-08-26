@@ -20,7 +20,10 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+
+        player.update(dt)
         player.draw(screen)
+        
         pygame.display.flip()
         dt = clock.tick(TARGET_FPS) / 1000 # 60 FPS
 
